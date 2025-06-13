@@ -62,3 +62,29 @@
      ws.send("command_to_execute")
      ```
 
+## Інсталяція Python-модулів безпосередньо з Python-інтерпретатора
+
+Іноді під час експлуатації або тестування зловмисник може захотіти встановити додаткові модулі безпосередньо через Python-інтерпретатор, не виходячи з нього. Ось як можна зробити інсталяцію:
+
+1. **Інсталяція за допомогою `subprocess`**:
+   - Використовує команду `pip` для встановлення пакета:
+   ```python
+   import subprocess
+   import sys
+   subprocess.check_call([sys.executable, "-m", "pip", "install", "pyautogui"])
+   ```
+
+2. **Інсталяція через `pip` бібліотеку**:
+   - Можна використовувати метод `pip.main()`, якщо ви працюєте зі старішими версіями Python:
+   ```python
+   import pip
+   pip.main(['install', 'pyautogui'])
+   ```
+
+3. **Альтернативний метод**: 
+   - За допомогою **`subprocess`** можна також використовувати інші методи для більш контрольованого виконання.
+   ```python
+   import subprocess
+   subprocess.check_call([sys.executable, "-m", "pip", "install", "pyautogui"])
+   ```
+
