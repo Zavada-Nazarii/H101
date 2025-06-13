@@ -19,14 +19,7 @@
    ffuf -u http://example.com/FUZZ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
    ```
 
-3. **-t**  
-   Вказує кількість одночасних запитів (паралельність).  
-   **Приклад**:  
-   ```bash
-   ffuf -u http://example.com/FUZZ -w /path/to/wordlist.txt -t 50
-   ```
-
-4. **-mc**  
+3. **-mc**  
    Вказує HTTP-статуси, які будуть відображатися в результатах.  
    **Приклад**:  
    ```bash
@@ -68,11 +61,11 @@
    ffuf -u http://example.com/FUZZ -w /path/to/wordlist.txt -H "User-Agent: Mozilla/5.0"
    ```
 
-10. **-p**  
+10. **-x**  
     Вказує проксі-сервер для перенаправлення запитів.  
     **Приклад**:  
     ```bash
-    ffuf -u http://example.com/FUZZ -w /path/to/wordlist.txt -p http://localhost:8080
+    ffuf -u http://example.com/FUZZ -w /path/to/wordlist.txt -x http://localhost:8080
     ```
 
 11. **-e**  
@@ -96,11 +89,11 @@
     ffuf -u http://example.com/FUZZ -w /path/to/wordlist.txt -v
     ```
 
-14. **-s**  
-    Вказує максимальний час очікування відповіді від сервера.  
+14. **-rate**  
+    Вказує рейт ліміт перебору (кількість запитів за секунду).  
     **Приклад**:  
     ```bash
-    ffuf -u http://example.com/FUZZ -w /path/to/wordlist.txt -s 10
+    ffuf -u http://example.com/FUZZ -w /path/to/wordlist.txt -rate 10
     ```
 
 15. **-o**  
@@ -115,19 +108,5 @@
     **Приклад**:  
     ```bash
     ffuf -u http://example.com/FUZZ -w /path/to/wordlist.txt -json
-    ```
-
-17. **-x**  
-    Використовує метод HTTP запиту (наприклад, GET, POST).  
-    **Приклад**:  
-    ```bash
-    ffuf -u http://example.com/FUZZ -w /path/to/wordlist.txt -x POST
-    ```
-
-18. **-r**  
-    Вимикає повтори запитів. Це корисно для прискорення тестування при великій кількості запитів.  
-    **Приклад**:  
-    ```bash
-    ffuf -u http://example.com/FUZZ -w /path/to/wordlist.txt -r
     ```
 
