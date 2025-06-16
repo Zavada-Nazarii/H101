@@ -1,4 +1,4 @@
-# 🛡️ Lab 3: XSS, RCE, ffuf та словники (PayloadsAllTheThings, SecLists)
+# 🛡️ Lab 3: XSS, RCE, LFI, ffuf та словники (PayloadsAllTheThings, SecLists)
 
 ## 📘 Середовище для виконання
 - **Metasploitable2** + **DVWA (Damn Vulnerable Web Application)**
