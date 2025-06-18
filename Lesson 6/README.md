@@ -1,9 +1,9 @@
 
 # 🛡️ Lab 4: Reverse Shell
 
-📘 Середовище для виконання
-Metasploitable2 + DVWA (Damn Vulnerable Web Application)
-PortSwigger Web Security Academy (https://portswigger.net/web-security)
+## 📘 Середовище для виконання
+- **Metasploitable2** + **DVWA (Damn Vulnerable Web Application)**
+- **PortSwigger Web Security Academy** (https://portswigger.net/web-security)
 
 ---
 
