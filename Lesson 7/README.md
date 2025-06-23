@@ -1,4 +1,4 @@
-# 🛡️ Lab 4: Мережа + підвищення
+# 🛡️ Lab 5: Мережа + підвищення
 
 ## 1. 🕵️‍♂️ MITM атака з Ettercap (ARP Spoofing)
 
@@ -141,7 +141,6 @@ sudo vim -c '!sh'
 - [HighOn.Coffee](https://highon.coffee/blog/)
 - [Red Team Guides](https://redteam.guide/docs/guides/)
 - [Cyber-Bookmarks](https://x0rb3l.github.io/Cyber-Bookmarks/bookmarks.html)
-- [IT-Security](https://sushant747.gitbooks.io/total-oscp-guide/content/)
 - [IT-Security](https://sushant747.gitbooks.io/total-oscp-guide/content/)
 
 ---
